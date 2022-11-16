@@ -10,3 +10,7 @@ fu.addEventListener('click', () => console.log('fu'));
 mi.addEventListener('click', () => console.log('mi'));
 
 // Pour le reste, a vous de jouer
+function shiPlayer(){
+  //  player.setAttribute("src","/img/shi.png");
+console.log("on affiche l'image de la pierre");
+}
