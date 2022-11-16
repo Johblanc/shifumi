@@ -13,7 +13,11 @@ mi.addEventListener('click', () => console.log('mi'));
 
 function fuPlayer() {
   // player.setAttribute("src","/img/fu.png");
-  
+  console.log("on affiche l'image de la feuille");
 
 }
 console.log(fuPlayer());
+function shiPlayer(){
+  //  player.setAttribute("src","/img/shi.png");
+console.log("on affiche l'image de la pierre");
+}
