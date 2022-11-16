@@ -9,4 +9,7 @@ shi.addEventListener('click', () => console.log('shi'));
 fu.addEventListener('click', () => console.log('fu'));
 mi.addEventListener('click', () => console.log('mi'));
 
-// Pour le reste, a vous de jouer
+/* // Pour le reste, a vous de jouer
+function miPlayer(){
+    player.setAttribute("src","/img/mi.png"
+} */
