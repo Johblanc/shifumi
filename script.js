@@ -10,3 +10,10 @@ fu.addEventListener('click', () => console.log('fu'));
 mi.addEventListener('click', () => console.log('mi'));
 
 // Pour le reste, a vous de jouer
+
+function fuPlayer() {
+  // player.setAttribute("src","/img/fu.png");
+  
+
+}
+console.log(fuPlayer());
