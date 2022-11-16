@@ -27,4 +27,8 @@ function miPlayer() {
   console.log("on affiche l'image de la feuille");
   }
 
-  
+function randomIA(){
+  let symboles=['shi', 'fu', 'mi'];
+  let rand=Math.floor(Math.random()*3);
+  return symboles[rand];
+}
