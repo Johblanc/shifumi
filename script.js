@@ -7,23 +7,24 @@ const command = document.getElementById('command');
 
 shi.addEventListener('click', () => shiPlayer());
 fu.addEventListener('click', () => fuPlayer());
-mi.addEventListener('click', () => console.log('mi'));
+mi.addEventListener('click', () => miPlayer());
 
 // Pour le reste, a vous de jouer
 
+function shiPlayer(){
+    //  player.setAttribute("src","/img/shi.png");
+  console.log("on affiche l'image de la pierre");
+  }
+
 function fuPlayer() {
   // player.setAttribute("src","/img/fu.png");
-  console.log("on affiche l'image de la feuille");
+  console.log("on affiche l'image des ciseaux");
 
 }
 
 function miPlayer() {
-  //  player.setAttribute("src","/img/mi.png");
-    console.log("on affiche l'image des ciseaux");
-}
+    //  player.setAttribute("src","/img/mi.png");
+  console.log("on affiche l'image de la feuille");
+  }
 
-
-function shiPlayer(){
-  //  player.setAttribute("src","/img/shi.png");
-console.log("on affiche l'image de la pierre");
-}
+  
