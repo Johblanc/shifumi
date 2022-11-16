@@ -14,21 +14,42 @@ mi.addEventListener('click', () => miPlayer());
 function shiPlayer(){
     //  player.setAttribute("src","/img/shi.png");
   console.log("on affiche l'image de la pierre");
+  compare("shi");
   }
 
 function fuPlayer() {
   // player.setAttribute("src","/img/fu.png");
   console.log("on affiche l'image des ciseaux");
+  compare("fu");
 
 }
 
 function miPlayer() {
     //  player.setAttribute("src","/img/mi.png");
   console.log("on affiche l'image de la feuille");
+  compare("mi");
   }
 
 function randomIA(){
   let symboles=['shi', 'fu', 'mi'];
   let rand=Math.floor(Math.random()*3);
   return symboles[rand];
+}
+
+function compare(coup) {
+  let resultRand = randomIA();
+  let gagnant = ["shifu","fumi","mishi"];
+  let enCours = coup + resultRand;
+  if(resultRand == coup){
+    console.log("Égalité");
+  }
+  else if (gagnant.includes(enCours)){
+     
+    console.log("Gagnant");
+  }
+  else{
+
+    console.log("Perdant");
+  }
+  
 }
