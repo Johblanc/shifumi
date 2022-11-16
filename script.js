@@ -5,7 +5,7 @@ const player = document.getElementById('player');
 const ia = document.getElementById('ia');
 const command = document.getElementById('command');
 
-shi.addEventListener('click', () => console.log('shi'));
+shi.addEventListener('click', () => shiPlayer());
 fu.addEventListener('click', () => console.log('fu'));
 mi.addEventListener('click', () => console.log('mi'));
 
@@ -17,6 +17,8 @@ function fuPlayer() {
 
 }
 console.log(fuPlayer());
+
+
 function shiPlayer(){
   //  player.setAttribute("src","/img/shi.png");
 console.log("on affiche l'image de la pierre");
