@@ -6,7 +6,7 @@ const ia = document.getElementById('ia');
 const command = document.getElementById('command');
 
 shi.addEventListener('click', () => shiPlayer());
-fu.addEventListener('click', () => console.log('fu'));
+fu.addEventListener('click', () => fuPlayer());
 mi.addEventListener('click', () => console.log('mi'));
 
 // Pour le reste, a vous de jouer
@@ -16,7 +16,7 @@ function fuPlayer() {
   console.log("on affiche l'image de la feuille");
 
 }
-console.log(fuPlayer());
+
 
 
 function shiPlayer(){
