@@ -16,20 +16,20 @@ mi.addEventListener('click', () => miPlayer());
 
 function shiPlayer() {
   //  player.setAttribute("src","/img/shi.png");
-  console.log("on affiche l'image de la pierre");
+  console.log("on affiche l'image de la pierre (shi)");
   compare("shi");
 }
 
 function fuPlayer() {
   // player.setAttribute("src","/img/fu.png");
-  console.log("on affiche l'image des ciseaux");
+  console.log("on affiche l'image des ciseaux (fu)");
   compare("fu");
 
 }
 
 function miPlayer() {
   //  player.setAttribute("src","/img/mi.png");
-  console.log("on affiche l'image de la feuille");
+  console.log("on affiche l'image de la feuille (mi)");
   compare("mi");
 }
 
@@ -43,6 +43,7 @@ function compare(coup) {
   let resultRand = randomIA();
   let gagnant = ["shifu", "fumi", "mishi"];
   let enCours = coup + resultRand;
+  console.log(`l'IA joue ${resultRand}`);
   if (resultRand == coup) {
     console.log("Égalité");
   }
