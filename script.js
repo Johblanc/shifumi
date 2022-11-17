@@ -17,12 +17,14 @@ mi.addEventListener('click', () => miPlayer());
 function shiPlayer() {
   //  player.setAttribute("src","/img/shi.png");
   console.log("on affiche l'image de la pierre (shi)");
+  console.log("on caches les boutons joueurs");
   compare("shi");
 }
 
 function fuPlayer() {
   // player.setAttribute("src","/img/fu.png");
   console.log("on affiche l'image des ciseaux (fu)");
+  console.log("on caches les boutons joueurs");
   compare("fu");
 
 }
@@ -30,6 +32,7 @@ function fuPlayer() {
 function miPlayer() {
   //  player.setAttribute("src","/img/mi.png");
   console.log("on affiche l'image de la feuille (mi)");
+  console.log("on caches les boutons joueurs");
   compare("mi");
 }
 
@@ -55,28 +58,33 @@ function compare(coup) {
   else {
 
     console.log("Perdant");
-    indentIA ();
+    indentIA();
   }
-  if(finDeManche()){ // La partie est finie
-console.log("score à zéro");
-  } else {          // La partie continue
-console.log("l'utilisateur choisi un coup");
+  if (finDeManche()) {  // La partie est finie
+    console.log("score à zéro");
+  } else {              // La partie continue
+    console.log("l'utilisateur choisi un coup");
+    console.log("on affiche les boutons joueurs");
   };
 }
 
-function indentPlayer(){
+function indentPlayer() {
   scorePlayer++;
   console.log(`le nouveau score du joueur c'est ${scorePlayer}`);
 }
 
 
-function indentIA (){
-  scoreIA++; 
-  console.log(`le nouveau score de l'IA c'est ${scoreIA}` )
+function indentIA() {
+  scoreIA++;
+  console.log(`le nouveau score de l'IA c'est ${scoreIA}`)
 }
 
-function finDeManche(){
+function finDeManche() {
   let sommescores = (scoreIA + scorePlayer);
   console.log(`Le score de la partie est de ${sommescores}`);
   return sommescores >= 3;
+}
+
+function razScore(){
+
 }
