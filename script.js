@@ -4,6 +4,7 @@ const mi = document.getElementById('mi');
 const player = document.getElementById('player');
 const ia = document.getElementById('ia');
 const command = document.getElementById('command');
+const restart = document.getElementById('restart');
 
 let scorePlayer = 0
 let scoreIA = 0
@@ -15,6 +16,7 @@ mi.addEventListener('click', () => miPlayer());
 // Pour le reste, a vous de jouer
 
 function shiPlayer() {
+  //restart.setAttribute("class", "btn-restart");
   //  player.setAttribute("src","/img/shi.png");
   console.log("on affiche l'image de la pierre (shi)");
   console.log("on caches les boutons joueurs");
@@ -22,6 +24,7 @@ function shiPlayer() {
 }
 
 function fuPlayer() {
+  //restart.setAttribute("class", "hidden btn-restart");
   // player.setAttribute("src","/img/fu.png");
   console.log("on affiche l'image des ciseaux (fu)");
   console.log("on caches les boutons joueurs");
