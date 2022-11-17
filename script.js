@@ -11,9 +11,6 @@ const SCOPLAYER = document.getElementById("score-player");
 const SCOIA = document.getElementById("score-ia");
 const RESTART = document.getElementById('restart');
 
-//VARIABLE DE SCORE A ZERO
-let scorePlayer = 0
-let scoreIA = 0
 
 //LIAISON DES EVENTS
 SHI.addEventListener('click', () => shiPlayer());
@@ -78,21 +75,19 @@ function compare(coup) {
 
 /**Incrémentation du Score du joueur */
 function indentPlayer() {
-  scorePlayer++;
-  console.log(`le nouveau score du joueur c'est ${scorePlayer}`);
-  SCOPLAYER.textContent =scorePlayer;   //--> Création du nouvelle function majScoreJoueur
+  console.log(`le nouveau score du joueur c'est ${SCOPLAYER.textContent}`);
+  SCOPLAYER.textContent = Number(SCOPLAYER.textContent) + 1 ;   //--> Création du nouvelle function majScoreJoueur
 }
 
 /**Incrémentation du Score l'IA */
 function indentIA() {
-  scoreIA++;
-  console.log(`le nouveau score de l'IA c'est ${scoreIA}`);
-  SCOIA.textContent =scoreIA;           //--> Création du nouvelle function majScoreIA
+  console.log(`le nouveau score de l'IA c'est ${SCOIA.textContent}`);
+  SCOIA.textContent = Number(SCOIA.textContent) + 1 ;  //--> Création du nouvelle function majScoreIA
 }
 
 /**Vérifiction des conditions de fin de partie */
 function finDeManche() {
-  let sommescores = (scoreIA + scorePlayer);
+  let sommescores = (Number(SCOIA.textContent) + Number(SCOPLAYER.textContent));
   console.log(`Le score de la partie est de ${sommescores}`);
   return sommescores >= 3;
 }
@@ -114,10 +109,8 @@ function switchHidden(){
 /**Reset des Scores */
 function razScore(){
   console.log("score à zéro");
-  scorePlayer = 0;
-  scoreIA = 0;
-  SCOPLAYER.textContent = scorePlayer;    //
-  SCOIA.textContent = scoreIA;            //--> Création du nouvelle function razAffichage
+  SCOPLAYER.textContent = 0;              //
+  SCOIA.textContent = 0;                  //--> Création du nouvelle function razAffichage
   switchHidden()                          //    + Enlever les images des balises PLAYER et IA
 }
 
