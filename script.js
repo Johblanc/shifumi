@@ -14,20 +14,15 @@ let scoreIA = 0
 shi.addEventListener('click', () => shiPlayer());
 fu.addEventListener('click', () => fuPlayer());
 mi.addEventListener('click', () => miPlayer());
-
-// Pour le reste, a vous de jouer
+restart.addEventListener('click', () => razScore());
 
 function shiPlayer() {
-  //restart.setAttribute("class", "btn-restart");
-  //  player.setAttribute("src","/img/shi.png");
   console.log("on affiche l'image de la pierre (shi)");
   affichageCoup(player,"shi")
   compare("shi");
 }
 
 function fuPlayer() {
-  //restart.setAttribute("class", "hidden btn-restart");
-  // player.setAttribute("src","/img/fu.png");
   console.log("on affiche l'image des ciseaux (fu)");
   affichageCoup(player,"fu")
   compare("fu");
@@ -35,7 +30,6 @@ function fuPlayer() {
 }
 
 function miPlayer() {
-  //  player.setAttribute("src","/img/mi.png");
   console.log("on affiche l'image de la feuille (mi)");
   affichageCoup(player,"mi")
   compare("mi");
@@ -59,7 +53,7 @@ function compare(coup) {
   else if (gagnant.includes(enCours)) {
 
     console.log("Gagnant");
-    indentPlayer()
+    indentPlayer();
   }
   else {
 
@@ -67,7 +61,8 @@ function compare(coup) {
     indentIA();
   }
   if (finDeManche()) {  // La partie est finie
-    razScore()
+    console.log("Les commandes se cachent et le restart apparait");
+    switchHidden();
   } else {              // La partie continue
     console.log("l'utilisateur choisi un coup");
   };
@@ -92,15 +87,28 @@ function finDeManche() {
   return sommescores >= 3;
 }
 
+
+function switchHidden(){
+  console.log(command.getAttribute("class"));
+  if (command.getAttribute("class")){
+    command.removeAttribute("class");
+    restart.setAttribute("class", "btn-restart hidden");
+  }else{
+    console.log("test null");
+    command.setAttribute("class", "hidden");
+    restart.setAttribute("class", "btn-restart");
+  }
+}
+
 function razScore(){
   console.log("score à zéro");
   scorePlayer = 0;
   scoPlayer.textContent =scorePlayer;
   scoreIA = 0;
   scoIA.textContent =scoreIA;
+  switchHidden()
 }
 
 function affichageCoup(balise,coupjoue){
   balise.setAttribute("src",`/img/${coupjoue}.png`);
-
 }
