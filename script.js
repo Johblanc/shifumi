@@ -40,18 +40,20 @@ function randomIA() {
 /**Résolution d'une manche */
 function compare(coupPlayer, coupIA) {
   let gagnant = ["shifu", "fumi", "mishi"];
+
   console.log(`l'IA joue ${coupIA}`);
   affichageCoup(IA,coupIA);
+  
   if (coupPlayer == coupIA) {
     console.log("Égalité");
   } 
   else if (gagnant.includes(coupPlayer + coupIA)) {
     console.log("Gagnant");
-    indentPlayer();
+    scoreUp(SCOPLAYER);
   }
   else {
     console.log("Perdant");
-    indentIA();
+    scoreUp(SCOIA);
   }
   if (finDeManche()) {  // La partie est finie
     console.log("Les commandes se cachent et le restart apparait");
@@ -61,17 +63,12 @@ function compare(coupPlayer, coupIA) {
   };
 }
 
-/**Incrémentation du Score du joueur */
-function indentPlayer() {
-  console.log(`le nouveau score du joueur c'est ${SCOPLAYER.textContent}`);
-  SCOPLAYER.textContent = Number(SCOPLAYER.textContent) + 1 ;   //--> Création du nouvelle function majScoreJoueur
+/**Incrémentation du Score*/
+function scoreUp(balise) {
+  balise.textContent = Number(balise.textContent) + 1 ;   //--> Création du nouvelle function majScoreJoueur
+  console.log(`Nouveau score ${SCOPLAYER.textContent} à ${SCOIA.textContent}`);
 }
 
-/**Incrémentation du Score l'IA */
-function indentIA() {
-  console.log(`le nouveau score de l'IA c'est ${SCOIA.textContent}`);
-  SCOIA.textContent = Number(SCOIA.textContent) + 1 ;  //--> Création du nouvelle function majScoreIA
-}
 
 /**Vérifiction des conditions de fin de partie */
 function finDeManche() {
