@@ -4,6 +4,9 @@ const mi = document.getElementById('mi');
 const player = document.getElementById('player');
 const ia = document.getElementById('ia');
 const command = document.getElementById('command');
+const scoPlayer = document.getElementById("score-player");
+const scoIA = document.getElementById("score-ia");
+
 
 let scorePlayer = 0
 let scoreIA = 0
@@ -17,14 +20,14 @@ mi.addEventListener('click', () => miPlayer());
 function shiPlayer() {
   //  player.setAttribute("src","/img/shi.png");
   console.log("on affiche l'image de la pierre (shi)");
-  console.log("on caches les boutons joueurs");
+  affichageCoup(player,"shi")
   compare("shi");
 }
 
 function fuPlayer() {
   // player.setAttribute("src","/img/fu.png");
   console.log("on affiche l'image des ciseaux (fu)");
-  console.log("on caches les boutons joueurs");
+  affichageCoup(player,"fu")
   compare("fu");
 
 }
@@ -32,7 +35,7 @@ function fuPlayer() {
 function miPlayer() {
   //  player.setAttribute("src","/img/mi.png");
   console.log("on affiche l'image de la feuille (mi)");
-  console.log("on caches les boutons joueurs");
+  affichageCoup(player,"mi")
   compare("mi");
 }
 
@@ -44,6 +47,7 @@ function randomIA() {
 
 function compare(coup) {
   let resultRand = randomIA();
+  affichageCoup(ia,resultRand)
   let gagnant = ["shifu", "fumi", "mishi"];
   let enCours = coup + resultRand;
   console.log(`l'IA joue ${resultRand}`);
@@ -63,7 +67,6 @@ function compare(coup) {
   if (finDeManche()) {  // La partie est finie
     razScore()
   } else {              // La partie continue
-    console.log("on affiche les boutons joueurs");
     console.log("l'utilisateur choisi un coup");
   };
 }
@@ -71,12 +74,14 @@ function compare(coup) {
 function indentPlayer() {
   scorePlayer++;
   console.log(`le nouveau score du joueur c'est ${scorePlayer}`);
+  scoPlayer.textContent =scorePlayer;
 }
 
 
 function indentIA() {
   scoreIA++;
-  console.log(`le nouveau score de l'IA c'est ${scoreIA}`)
+  console.log(`le nouveau score de l'IA c'est ${scoreIA}`);
+  scoIA.textContent =scoreIA;
 }
 
 function finDeManche() {
@@ -87,6 +92,13 @@ function finDeManche() {
 
 function razScore(){
   console.log("score à zéro");
-  scorePlayer = 0
-  scoreIA = 0
+  scorePlayer = 0;
+  scoPlayer.textContent =scorePlayer;
+  scoreIA = 0;
+  scoIA.textContent =scoreIA;
+}
+
+function affichageCoup(balise,coupjoue){
+  balise.setAttribute("src",`/img/${coupjoue}.png`);
+
 }
