@@ -1,49 +1,59 @@
-const shi = document.getElementById('shi');
-const fu = document.getElementById('fu');
-const mi = document.getElementById('mi');
-const player = document.getElementById('player');
-const ia = document.getElementById('ia');
-const command = document.getElementById('command');
-const scoPlayer = document.getElementById("score-player");
-const scoIA = document.getElementById("score-ia");
-const restart = document.getElementById('restart');
 
+//INITIALISATION
+
+const SHI = document.getElementById('shi');
+const FU = document.getElementById('fu');
+const MI = document.getElementById('mi');
+const PLAYER = document.getElementById('player');
+const IA = document.getElementById('ia');
+const COMMAND = document.getElementById('command');
+const SCOPLAYER = document.getElementById("score-player");
+const SCOIA = document.getElementById("score-ia");
+const RESTART = document.getElementById('restart');
+
+//VARIABLE DE SCORE A ZERO
 let scorePlayer = 0
 let scoreIA = 0
 
-shi.addEventListener('click', () => shiPlayer());
-fu.addEventListener('click', () => fuPlayer());
-mi.addEventListener('click', () => miPlayer());
-restart.addEventListener('click', () => razScore());
+//LIAISON DES EVENTS
+SHI.addEventListener('click', () => shiPlayer());
+FU.addEventListener('click', () => fuPlayer());
+MI.addEventListener('click', () => miPlayer());
+RESTART.addEventListener('click', () => razScore());
 
+/**Le joueur joue Shi, la Pierre */
 function shiPlayer() {
   console.log("on affiche l'image de la pierre (shi)");
-  affichageCoup(player,"shi")
+  affichageCoup(PLAYER,"shi")
   compare("shi");
 }
 
+/**Le joueur joue Fu, les Ciseaux */
 function fuPlayer() {
   console.log("on affiche l'image des ciseaux (fu)");
-  affichageCoup(player,"fu")
+  affichageCoup(PLAYER,"fu")
   compare("fu");
 
 }
 
+/**Le joueur joue Mi, la Feuille */
 function miPlayer() {
   console.log("on affiche l'image de la feuille (mi)");
-  affichageCoup(player,"mi")
+  affichageCoup(PLAYER,"mi")
   compare("mi");
 }
 
+/**L'IA joue un coup */
 function randomIA() {
   let symboles = ['shi', 'fu', 'mi'];
   let rand = Math.floor(Math.random() * 3);
   return symboles[rand];
 }
 
+/**Résolution d'une manche */
 function compare(coup) {
   let resultRand = randomIA();
-  affichageCoup(ia,resultRand)
+  affichageCoup(IA,resultRand)
   let gagnant = ["shifu", "fumi", "mishi"];
   let enCours = coup + resultRand;
   console.log(`l'IA joue ${resultRand}`);
@@ -51,12 +61,10 @@ function compare(coup) {
     console.log("Égalité");
   }
   else if (gagnant.includes(enCours)) {
-
     console.log("Gagnant");
     indentPlayer();
   }
   else {
-
     console.log("Perdant");
     indentIA();
   }
@@ -68,19 +76,21 @@ function compare(coup) {
   };
 }
 
+/**Incrémentation du Score du joueur */
 function indentPlayer() {
   scorePlayer++;
   console.log(`le nouveau score du joueur c'est ${scorePlayer}`);
-  scoPlayer.textContent =scorePlayer;
+  SCOPLAYER.textContent =scorePlayer;   //--> Création du nouvelle function majScoreJoueur
 }
 
-
+/**Incrémentation du Score l'IA */
 function indentIA() {
   scoreIA++;
   console.log(`le nouveau score de l'IA c'est ${scoreIA}`);
-  scoIA.textContent =scoreIA;
+  SCOIA.textContent =scoreIA;           //--> Création du nouvelle function majScoreIA
 }
 
+/**Vérifiction des conditions de fin de partie */
 function finDeManche() {
   let sommescores = (scoreIA + scorePlayer);
   console.log(`Le score de la partie est de ${sommescores}`);
@@ -88,27 +98,30 @@ function finDeManche() {
 }
 
 
+/**Interversion de l'affichage des commande et du restart */
 function switchHidden(){
-  console.log(command.getAttribute("class"));
-  if (command.getAttribute("class")){
-    command.removeAttribute("class");
-    restart.setAttribute("class", "btn-restart hidden");
+  console.log(COMMAND.getAttribute("class"));
+  if (COMMAND.getAttribute("class")){
+    COMMAND.removeAttribute("class");
+    RESTART.setAttribute("class", "btn-restart hidden");
   }else{
     console.log("test null");
-    command.setAttribute("class", "hidden");
-    restart.setAttribute("class", "btn-restart");
+    COMMAND.setAttribute("class", "hidden");
+    RESTART.setAttribute("class", "btn-restart");
   }
 }
 
+/**Reset des Scores */
 function razScore(){
   console.log("score à zéro");
   scorePlayer = 0;
-  scoPlayer.textContent =scorePlayer;
   scoreIA = 0;
-  scoIA.textContent =scoreIA;
-  switchHidden()
+  SCOPLAYER.textContent = scorePlayer;    //
+  SCOIA.textContent = scoreIA;            //--> Création du nouvelle function razAffichage
+  switchHidden()                          //    + Enlever les images des balises PLAYER et IA
 }
 
+/**Affichage de l'image d'un coup dans une balise */
 function affichageCoup(balise,coupjoue){
   balise.setAttribute("src",`/img/${coupjoue}.png`);
 }
