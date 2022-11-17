@@ -5,6 +5,9 @@ const player = document.getElementById('player');
 const ia = document.getElementById('ia');
 const command = document.getElementById('command');
 
+let scorePlayer = 0
+let scoreIA = 0
+
 shi.addEventListener('click', () => shiPlayer());
 fu.addEventListener('click', () => fuPlayer());
 mi.addEventListener('click', () => miPlayer());
