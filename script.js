@@ -43,7 +43,7 @@ function compare(coupPlayer, coupIA) {
 
   console.log(`l'IA joue ${coupIA}`);
   affichageCoup(IA,coupIA);
-  
+
   if (coupPlayer == coupIA) {
     console.log("Égalité");
   } 
@@ -55,7 +55,7 @@ function compare(coupPlayer, coupIA) {
     console.log("Perdant");
     scoreUp(SCOIA);
   }
-  if (finDeManche()) {  // La partie est finie
+  if (finDePartie()) {  // La partie est finie
     console.log("Les commandes se cachent et le restart apparait");
     switchHidden();
   } else {              // La partie continue
@@ -71,7 +71,7 @@ function scoreUp(balise) {
 
 
 /**Vérifiction des conditions de fin de partie */
-function finDeManche() {
+function finDePartie() {
   let sommescores = (Number(SCOIA.textContent) + Number(SCOPLAYER.textContent));
   console.log(`Le score de la partie est de ${sommescores}`);
   return sommescores >= 3;
@@ -94,7 +94,13 @@ function switchHidden(){
 /**Reset des Scores */
 function razScore(){
   console.log("score à zéro");
-  SCOPLAYER.textContent = 0;              //
-  SCOIA.textContent = 0;                  //--> Création du nouvelle function razAffichage
-  switchHidden()                          //    + Enlever les images des balises PLAYER et IA
+  razAffichage();
+}
+
+function razAffichage(){
+  SCOPLAYER.textContent = 0;
+  SCOIA.textContent = 0;
+  switchHidden() ;
+  PLAYER.removeAttribute("src");
+  IA.removeAttribute("src");
 }
