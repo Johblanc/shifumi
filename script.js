@@ -53,6 +53,12 @@ function compare(coup) {
   else{
 
     console.log("Perdant");
+    indentIA ();
   }
   
+}
+
+function indentIA (){
+  scoreIA++; 
+  console.log(`le nouveau score de l'IA c'est ${scoreIA}` )
 }
