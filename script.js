@@ -77,21 +77,21 @@ function compare(coup) {
 }
 
 /**Incrémentation du Score du joueur */
-function indentPlayer() {
+function indentPlayer() {               //--> Nom à changer  /!\ ici et aux appel
   scorePlayer++;
   console.log(`le nouveau score du joueur c'est ${scorePlayer}`);
   SCOPLAYER.textContent =scorePlayer;   //--> Création du nouvelle function majScoreJoueur
 }
 
 /**Incrémentation du Score l'IA */
-function indentIA() {
+function indentIA() {                   //--> Nom à changer  /!\ ici et aux appel
   scoreIA++;
   console.log(`le nouveau score de l'IA c'est ${scoreIA}`);
   SCOIA.textContent =scoreIA;           //--> Création du nouvelle function majScoreIA
 }
 
 /**Vérifiction des conditions de fin de partie */
-function finDeManche() {
+function finDeManche() {                //--> Nom à changer  /!\ ici et aux appel
   let sommescores = (scoreIA + scorePlayer);
   console.log(`Le score de la partie est de ${sommescores}`);
   return sommescores >= 3;
