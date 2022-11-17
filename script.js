@@ -57,8 +57,11 @@ function compare(coup) {
     console.log("Perdant");
     indentIA ();
   }
-  finDeManche();
-  console.log(finDeManche());
+  if(finDeManche()){ // La partie est finie
+console.log("score à zéro");
+  } else {          // La partie continue
+console.log("l'utilisateur choisi un coup");
+  };
 }
 
 function indentPlayer(){
