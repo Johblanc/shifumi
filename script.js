@@ -61,10 +61,10 @@ function compare(coup) {
     indentIA();
   }
   if (finDeManche()) {  // La partie est finie
-    console.log("score à zéro");
+    razScore()
   } else {              // La partie continue
-    console.log("l'utilisateur choisi un coup");
     console.log("on affiche les boutons joueurs");
+    console.log("l'utilisateur choisi un coup");
   };
 }
 
@@ -86,5 +86,7 @@ function finDeManche() {
 }
 
 function razScore(){
-
+  console.log("score à zéro");
+  scorePlayer = 0
+  scoreIA = 0
 }
