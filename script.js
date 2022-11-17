@@ -13,32 +13,18 @@ const RESTART = document.getElementById('restart');
 
 
 //LIAISON DES EVENTS
-SHI.addEventListener('click', () => shiPlayer());
-FU.addEventListener('click', () => fuPlayer());
-MI.addEventListener('click', () => miPlayer());
+SHI.addEventListener('click', () => coupPlayer("shi"));
+FU.addEventListener('click', () => coupPlayer("fu"));
+MI.addEventListener('click', () => coupPlayer("mi"));
 RESTART.addEventListener('click', () => razScore());
 
-/**Le joueur joue Shi, la Pierre */
-function shiPlayer() {
-  console.log("on affiche l'image de la pierre (shi)");
-  affichageCoup(PLAYER,"shi")
-  compare("shi");
+/**Le joueur joue un coup : "shi" || "fu" || "mi" */
+function coupPlayer(coup) {
+  console.log(`on affiche l'image de ${coup}`);
+  affichageCoup(PLAYER,coup)
+  compare(coup);
 }
 
-/**Le joueur joue Fu, les Ciseaux */
-function fuPlayer() {
-  console.log("on affiche l'image des ciseaux (fu)");
-  affichageCoup(PLAYER,"fu")
-  compare("fu");
-
-}
-
-/**Le joueur joue Mi, la Feuille */
-function miPlayer() {
-  console.log("on affiche l'image de la feuille (mi)");
-  affichageCoup(PLAYER,"mi")
-  compare("mi");
-}
 
 /**L'IA joue un coup */
 function randomIA() {
