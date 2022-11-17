@@ -14,11 +14,11 @@ mi.addEventListener('click', () => miPlayer());
 
 // Pour le reste, a vous de jouer
 
-function shiPlayer(){
-    //  player.setAttribute("src","/img/shi.png");
+function shiPlayer() {
+  //  player.setAttribute("src","/img/shi.png");
   console.log("on affiche l'image de la pierre");
   compare("shi");
-  }
+}
 
 function fuPlayer() {
   // player.setAttribute("src","/img/fu.png");
@@ -28,31 +28,38 @@ function fuPlayer() {
 }
 
 function miPlayer() {
-    //  player.setAttribute("src","/img/mi.png");
+  //  player.setAttribute("src","/img/mi.png");
   console.log("on affiche l'image de la feuille");
   compare("mi");
-  }
+}
 
-function randomIA(){
-  let symboles=['shi', 'fu', 'mi'];
-  let rand=Math.floor(Math.random()*3);
+function randomIA() {
+  let symboles = ['shi', 'fu', 'mi'];
+  let rand = Math.floor(Math.random() * 3);
   return symboles[rand];
 }
 
 function compare(coup) {
   let resultRand = randomIA();
-  let gagnant = ["shifu","fumi","mishi"];
+  let gagnant = ["shifu", "fumi", "mishi"];
   let enCours = coup + resultRand;
-  if(resultRand == coup){
+  if (resultRand == coup) {
     console.log("Égalité");
   }
-  else if (gagnant.includes(enCours)){
-     
+  else if (gagnant.includes(enCours)) {
+
     console.log("Gagnant");
+    indentPlayer()
   }
-  else{
+  else {
 
     console.log("Perdant");
   }
-  
+
 }
+-
+function indentPlayer(){
+  scorePlayer++;
+  console.log(`le nouveau score du joueur c'est ${scorePlayer}`);
+}
+
