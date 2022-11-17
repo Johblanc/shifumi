@@ -22,9 +22,13 @@ RESTART.addEventListener('click', () => razScore());
 function coupPlayer(coup) {
   console.log(`on affiche l'image de ${coup}`);
   affichageCoup(PLAYER,coup)
-  compare(coup);
+  compare(coup,randomIA());
 }
 
+/**Affichage de l'image d'un coup dans une balise */
+function affichageCoup(balise,coupjoue){
+  balise.setAttribute("src",`/img/${coupjoue}.png`);
+}
 
 /**L'IA joue un coup */
 function randomIA() {
@@ -34,16 +38,14 @@ function randomIA() {
 }
 
 /**Résolution d'une manche */
-function compare(coup) {
-  let resultRand = randomIA();
-  affichageCoup(IA,resultRand)
+function compare(coupPlayer, coupIA) {
   let gagnant = ["shifu", "fumi", "mishi"];
-  let enCours = coup + resultRand;
-  console.log(`l'IA joue ${resultRand}`);
-  if (resultRand == coup) {
+  console.log(`l'IA joue ${coupIA}`);
+  affichageCoup(IA,coupIA);
+  if (coupPlayer == coupIA) {
     console.log("Égalité");
-  }
-  else if (gagnant.includes(enCours)) {
+  } 
+  else if (gagnant.includes(coupPlayer + coupIA)) {
     console.log("Gagnant");
     indentPlayer();
   }
@@ -98,9 +100,4 @@ function razScore(){
   SCOPLAYER.textContent = 0;              //
   SCOIA.textContent = 0;                  //--> Création du nouvelle function razAffichage
   switchHidden()                          //    + Enlever les images des balises PLAYER et IA
-}
-
-/**Affichage de l'image d'un coup dans une balise */
-function affichageCoup(balise,coupjoue){
-  balise.setAttribute("src",`/img/${coupjoue}.png`);
 }
