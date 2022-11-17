@@ -57,7 +57,8 @@ function compare(coup) {
     console.log("Perdant");
     indentIA ();
   }
-
+  finDeManche();
+  console.log(finDeManche());
 }
 
 function indentPlayer(){
@@ -71,4 +72,8 @@ function indentIA (){
   console.log(`le nouveau score de l'IA c'est ${scoreIA}` )
 }
 
-
+function finDeManche(){
+  let sommescores = (scoreIA + scorePlayer);
+  console.log(`Le score de la partie est de ${sommescores}`);
+  return sommescores >= 3;
+}
