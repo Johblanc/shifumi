@@ -104,6 +104,7 @@ function switchHidden(){
   if (COMMAND.getAttribute("class")){
     COMMAND.removeAttribute("class");
     RESTART.setAttribute("class", "btn-restart hidden");
+    razAffichage();
   }else{
     console.log("test null");
     COMMAND.setAttribute("class", "hidden");
@@ -119,6 +120,12 @@ function razScore(){
   SCOPLAYER.textContent = scorePlayer;    //
   SCOIA.textContent = scoreIA;            //--> Création du nouvelle function razAffichage
   switchHidden()                          //    + Enlever les images des balises PLAYER et IA
+}
+
+/** Effacement des balises jouées une fois la partie fini */
+function razAffichage() {
+  PLAYER.removeAttribute("src");   
+    IA.removeAttribute("src"); 
 }
 
 /**Affichage de l'image d'un coup dans une balise */
