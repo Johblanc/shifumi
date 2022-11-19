@@ -113,20 +113,21 @@ function switchHidden(){
 }
 
 /**Reset des Scores */
-function razScore(){
-  console.log("score à zéro");
-  razAffichage();
-  SCOPLAYER.textContent = scorePlayer;    //
-  SCOIA.textContent = scoreIA;      //--> Création du nouvelle function razAffichage    // FAIT
-  switchHidden()                          //    + Enlever les images des balises PLAYER et IA//  FAIT
+function razScore(){                      // Pour Jean-Seb --> Attention, le but de la création de de la fonction razAffichage
+                                          // est sépararer la Logique de l'Affichage. Pour les ligne suivantes on à :
+  console.log("score à zéro");            // Logique -> OK
+  razAffichage();                         // Appel de la fonction d'affichage -> OK
+  SCOPLAYER.textContent = scorePlayer;    // Affichage -> cette ligne n'est pas à sa place.
+  SCOIA.textContent = scoreIA;            // Affichage -> cette ligne n'est pas à sa place.
+  switchHidden()                          // Affichage -> cette ligne n'est pas à sa place.
 }
 
 /** Effacement des balises jouées une fois la partie fini */
-function razAffichage() {
-  scorePlayer = 0;
-  scoreIA = 0;
-  PLAYER.removeAttribute("src");   
-    IA.removeAttribute("src"); 
+function razAffichage() {                 // Même choses pour la fonction d'affichage :
+  scorePlayer = 0;                        // Logique -> cette ligne n'est pas à sa place.
+  scoreIA = 0;                            // Logique -> cette ligne n'est pas à sa place.
+  PLAYER.removeAttribute("src");          // Affichage -> OK
+    IA.removeAttribute("src");            // Affichage -> OK
 }
 
 /**Affichage de l'image d'un coup dans une balise */
