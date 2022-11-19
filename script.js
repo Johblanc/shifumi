@@ -62,36 +62,41 @@ function compare(coup) {
   }
   else if (gagnant.includes(enCours)) {
     console.log("Gagnant");
-    indentPlayer();
+    playerUp();
   }
   else {
     console.log("Perdant");
-    indentIA();
+    iaUp();
   }
-  if (finDeManche()) {  // La partie est finie
+  if (finDePartie()) {  // La partie est finie
     console.log("Les commandes se cachent et le restart apparait");
     switchHidden();
-  } else {              // La partie continue
+  } else {              // La partie continue 
     console.log("l'utilisateur choisi un coup");
   };
 }
 
+/** Mise à jour de l'affichage du score */
+function majScore(balise, score) {
+  balise.textContent = score; 
+}
+
 /**Incrémentation du Score du joueur */
-function indentPlayer() {               //--> Nom à changer  /!\ ici et aux appel
+function playerUp() {              
   scorePlayer++;
   console.log(`le nouveau score du joueur c'est ${scorePlayer}`);
-  SCOPLAYER.textContent =scorePlayer;   //--> Création du nouvelle function majScoreJoueur
+  majScore(SCOPLAYER, scorePlayer )
 }
 
 /**Incrémentation du Score l'IA */
-function indentIA() {                   //--> Nom à changer  /!\ ici et aux appel
+function iaUp() {                   
   scoreIA++;
   console.log(`le nouveau score de l'IA c'est ${scoreIA}`);
-  SCOIA.textContent =scoreIA;           //--> Création du nouvelle function majScoreIA
+  majScore(SCOIA, scoreIA)
 }
 
 /**Vérifiction des conditions de fin de partie */
-function finDeManche() {                //--> Nom à changer  /!\ ici et aux appel
+function finDePartie() {               
   let sommescores = (scoreIA + scorePlayer);
   console.log(`Le score de la partie est de ${sommescores}`);
   return sommescores >= 3;
@@ -113,21 +118,21 @@ function switchHidden(){
 }
 
 /**Reset des Scores */
-function razScore(){                      // Pour Jean-Seb --> Attention, le but de la création de de la fonction razAffichage
-                                          // est sépararer la Logique de l'Affichage. Pour les ligne suivantes on à :
-  console.log("score à zéro");            // Logique -> OK
-  razAffichage();                         // Appel de la fonction d'affichage -> OK
-  SCOPLAYER.textContent = scorePlayer;    // Affichage -> cette ligne n'est pas à sa place.
-  SCOIA.textContent = scoreIA;            // Affichage -> cette ligne n'est pas à sa place.
-  switchHidden()                          // Affichage -> cette ligne n'est pas à sa place.
+function razScore(){                      
+  scorePlayer = 0;                        
+  scoreIA = 0;                                     
+  console.log("score à zéro");            
+  razAffichage();                         
+                          
 }
 
 /** Effacement des balises jouées une fois la partie fini */
-function razAffichage() {                 // Même choses pour la fonction d'affichage :
-  scorePlayer = 0;                        // Logique -> cette ligne n'est pas à sa place.
-  scoreIA = 0;                            // Logique -> cette ligne n'est pas à sa place.
-  PLAYER.removeAttribute("src");          // Affichage -> OK
-    IA.removeAttribute("src");            // Affichage -> OK
+function razAffichage() {                 
+  SCOPLAYER.textContent = scorePlayer;    
+  SCOIA.textContent = scoreIA;            
+  switchHidden()                          
+  PLAYER.removeAttribute("src");          
+    IA.removeAttribute("src");            
 }
 
 /**Affichage de l'image d'un coup dans une balise */
