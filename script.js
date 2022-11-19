@@ -132,5 +132,5 @@ function razAffichage() {                 // Même choses pour la fonction d'aff
 
 /**Affichage de l'image d'un coup dans une balise */
 function affichageCoup(balise,coupjoue){
-  balise.setAttribute("src",`/img/${coupjoue}.png`);
+  balise.setAttribute("src",`./img/${coupjoue}.png`);
 }
