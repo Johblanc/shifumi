@@ -11,6 +11,8 @@ const SCOPLAYER = document.getElementById("score-player");
 const SCOIA = document.getElementById("score-ia");
 const RESTART = document.getElementById('restart');
 
+let scorePlayer = 0
+let scoreIA = 0
 
 //LIAISON DES EVENTS
 SHI.addEventListener('click', () => coupPlayer("shi"));
@@ -49,11 +51,13 @@ function compare(coupPlayer, coupIA) {
   } 
   else if (gagnant.includes(coupPlayer + coupIA)) {
     console.log("Gagnant");
-    scoreUp(SCOPLAYER);
+    scorePlayer += 1
+    scoreUp(SCOPLAYER,scorePlayer);
   }
   else {
     console.log("Perdant");
-    scoreUp(SCOIA);
+    scoreIA += 1
+    scoreUp(SCOIA, scoreIA);
   }
   if (finDePartie()) {  // La partie est finie
     console.log("Les commandes se cachent et le restart apparait");
@@ -64,15 +68,14 @@ function compare(coupPlayer, coupIA) {
 }
 
 /**Incrémentation du Score*/
-function scoreUp(balise) {
-  balise.textContent = Number(balise.textContent) + 1 ;   //--> Création du nouvelle function majScoreJoueur
-  console.log(`Nouveau score ${SCOPLAYER.textContent} à ${SCOIA.textContent}`);
+function scoreUp(balise,valeur) {
+  balise.textContent = valeur ;   //--> Création du nouvelle function majScoreJoueur
 }
 
 
 /**Vérifiction des conditions de fin de partie */
 function finDePartie() {
-  let sommescores = (Number(SCOIA.textContent) + Number(SCOPLAYER.textContent));
+  let sommescores = scorePlayer + scoreIA;
   console.log(`Le score de la partie est de ${sommescores}`);
   return sommescores >= 3;
 }
@@ -94,12 +97,14 @@ function switchHidden(){
 /**Reset des Scores */
 function razScore(){
   console.log("score à zéro");
+  scorePlayer = 0;
+  scoreIA = 0;
   razAffichage();
 }
 
 function razAffichage(){
-  SCOPLAYER.textContent = 0;
-  SCOIA.textContent = 0;
+  SCOPLAYER.textContent = scorePlayer;
+  SCOIA.textContent = scoreIA;
   switchHidden() ;
   PLAYER.removeAttribute("src");
   IA.removeAttribute("src");
